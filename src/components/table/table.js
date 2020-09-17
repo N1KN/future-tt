@@ -1,4 +1,5 @@
 import React from 'react';
+import { Table as BootstrapTable, Navbar, Button } from 'react-bootstrap';
 import TableItem from "../table-item";
 import ErrorIndicator from "../error-indicator";
 import PaginationBar from "../paginator";
@@ -42,19 +43,20 @@ const Table = ({headerItems, bodyItems, pageIndex, renderId = true}) => {
 
     return (
         <React.Fragment>
-            <nav className="navbar navbar-dark border-0 flex-row">
-                <PaginationBar className="mr-auto mb-0"/>
+            <Navbar expand={false} variant="dark" className="border-0 flex-row">
+                <Button size="sm" className="btn btn-sm btn-primary my-2 my-sm-0" type="submit">Add Row</Button>
+                {/*<PaginationBar className="mr-auto mb-0"/>*/}
                 <SearchBar />
-            </nav>
-            <table className="table table-hover">
+            </Navbar>
+            <BootstrapTable striped bordered hover variant="dark">
                 <thead className="thead-dark">
                     {renderHeader(headerItems, renderId)}
                 </thead>
                 <tbody>
                     {renderBody(bodyItems, renderId)}
                 </tbody>
-            </table>
-            <nav className="navbar navbar-dark border-0 flex-column">
+            </BootstrapTable>
+            <Navbar expand={false} variant="dark" className="border-0 flex-column">
                 {/*<select className="d-none w-auto mr-auto form-control-sm">*/}
                 {/*    <option>5</option>*/}
                 {/*    <option>10</option>*/}
@@ -63,7 +65,7 @@ const Table = ({headerItems, bodyItems, pageIndex, renderId = true}) => {
                 {/*    <option>100</option>*/}
                 {/*</select>*/}
                 <PaginationBar />
-            </nav>
+            </Navbar>
 
         </React.Fragment>
     );

@@ -1,16 +1,18 @@
 import React from 'react';
+import {Navbar} from "react-bootstrap";
+import {LinkContainer} from "react-router-bootstrap";
+
 import './header.css';
-import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="header card-header">
-        <h3>
-            <Link className="text-success" to="/">
-                FutureTT
-            </Link>
-        </h3>
-    </header>
+    <React.Fragment>
+        <Navbar className="header" bg="secondary" variant="dark">
+            <LinkContainer to="/">
+                <Navbar.Brand className="font-weight-bold border-0">FutureTT</Navbar.Brand>
+            </LinkContainer>
+        </Navbar>
+    </React.Fragment>
   );
 };
 

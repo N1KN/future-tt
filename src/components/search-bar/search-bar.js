@@ -1,12 +1,13 @@
 import React from 'react';
+import {Button, Form} from "react-bootstrap";
 
 const SearchBar = () => {
     return (
         <React.Fragment>
-            <form className="form-inline my-2">
-                <input className="form-control form-control-sm mr-sm-2" placeholder="Search" type="text" />
-                <button className="btn btn-sm btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <Form className="form-inline my-2">
+                <Form.Control size="sm" className="border-secondary mr-sm-2 bg-primary text-white" placeholder="Search" type="text" />
+                <Button size="sm" className="my-2 my-sm-0" type="submit">Search</Button>
+            </Form>
         </React.Fragment>
     );
 }

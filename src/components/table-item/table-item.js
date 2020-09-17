@@ -1,9 +1,9 @@
 import React from 'react';
 import './table-item.css';
 
-const TableItem = ({data, renderId, key}) => {
+const TableItem = ({data, renderId}) => {
     return (
-        <tr key={key}>
+        <tr>
             {data.map((text, rowIndex) => {
                 const scope = (rowIndex === 0 && renderId) ? "row" : undefined;
                 return (

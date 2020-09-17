@@ -3,16 +3,13 @@
   /*padding-left: 10px;*/
 }
 
+.header a {
+  color: rgb(31 208 14) !important
+}
+
 .header a:hover {
   text-decoration: none;
+  color: white !important;
 }
 
-.header h3 a {
-  /*color: white;*/
-}
-
-.header h3 a:hover {
-  /*color: #00bc8c;*/
-  color: white;
-}
 
