@@ -1,0 +1,34 @@
+.table th .sortable {
+	cursor: pointer;
+}
+
+.table th .sortable.order-4:before {
+	margin-left: 3.5px;
+	content: "\2191";
+	opacity: 0.4;
+}
+
+.table th .sortable.order-4:after {
+	content: "\2193";
+	opacity: 0.4;
+}
+
+.table th .sortable.caret-4-asc:before {
+	margin-left: 3.5px;
+	content: "\2191";
+}
+
+.table th .sortable.caret-4-asc:after {
+	content: "\2193";
+	opacity: 0.4;
+}
+
+.table th .sortable.caret-4-desc:before {
+	margin-left: 3.5px;
+	content: "\2191";
+	opacity: 0.4;
+}
+
+.table th .sortable.caret-4-desc:after {
+	content: "\2193";
+}
