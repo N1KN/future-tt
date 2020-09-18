@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Table as BootstrapTable, Navbar, Button } from 'react-bootstrap';
 import TableItem from "../table-item";
 import ErrorIndicator from "../error-indicator";
@@ -6,9 +6,12 @@ import PaginationBar from "../paginator";
 import SearchBar from "../search-bar";
 
 import './table.css';
+import ElementCreatorModal from "../modal-element-creator";
 
 
-const Table = ({headerItems, bodyItems, pageIndex, renderId = true}) => {
+const Table = ({headerItems, bodyItems, bodyItemsEditor, pageIndex, renderId = true}) => {
+
+    const [show, setShow] = useState(false);
 
     const renderHeader = (columnNames, renderId = true) => {
         if(renderId) columnNames.unshift({text: '#', sortable: true})
@@ -17,7 +20,7 @@ const Table = ({headerItems, bodyItems, pageIndex, renderId = true}) => {
                 {columnNames.map(({text, sortable}, index) => (
                     <th scope="col" key={index}>
                         {text}
-                        {sortable ? <span className="sortable order-4" /> : null}
+                        {sortable ? <span onClick={()=> false} className="sortable order-4" /> : null}
                     </th>
                 ))}
             </tr>
@@ -43,8 +46,19 @@ const Table = ({headerItems, bodyItems, pageIndex, renderId = true}) => {
 
     return (
         <React.Fragment>
+            <ElementCreatorModal
+                isHidden={show}
+                toggleFunction={setShow}
+                items={headerItems}
+                onElementCreated={bodyItemsEditor}
+            />
             <Navbar expand={false} variant="dark" className="border-0 flex-row">
-                <Button size="sm" className="btn btn-sm btn-primary my-2 my-sm-0" type="submit">Add Row</Button>
+                <Button
+                    size="sm"
+                    className="btn btn-sm btn-primary my-2 my-sm-0"
+                    type="submit"
+                    onClick={() => setShow(true)}
+                >Add Row</Button>
                 {/*<PaginationBar className="mr-auto mb-0"/>*/}
                 <SearchBar />
             </Navbar>
@@ -64,7 +78,7 @@ const Table = ({headerItems, bodyItems, pageIndex, renderId = true}) => {
                 {/*    <option>50</option>*/}
                 {/*    <option>100</option>*/}
                 {/*</select>*/}
-                <PaginationBar />
+                <PaginationBar currentPageIndex={pageIndex}/>
             </Navbar>
 
         </React.Fragment>

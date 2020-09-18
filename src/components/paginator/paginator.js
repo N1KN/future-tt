@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import './paginator.css';
 
-const PaginationBar = ({ className: classString = '', ...props }) => {
+const PaginationBar = ({ className: classString = '', currentPageIndex, ...props }) => {
 
 
 
-    const _currentPage = 2;
+    const _currentPage = currentPageIndex;
     const _pages = [...([...Array(11).keys()]).slice(1)];
 
     return (
