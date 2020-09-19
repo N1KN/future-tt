@@ -15,16 +15,16 @@ const ElementCreatorModal = ({items, onElementCreated, toggleFunction, isHidden}
     };
 
     const handleClose = () => toggleFunction(false);
-    const handleShow = () => toggleFunction(true);
+    // const handleShow = () => toggleFunction(true);
     const handleSubmit = (event) => {
-        const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
 
-        onElementCreated((state) => [
-            ...state,
-            Object.values(formData)
-        ])
+        const [id, firstName, lastName, email, phone] = Object.values(formData);
+        onElementCreated(id, firstName, lastName, email, phone);
+        // onElementCreated(...Object.values(formData));
+
+        handleClose();
     };
 
     const renderFormItems = (items) => {
@@ -52,7 +52,7 @@ const ElementCreatorModal = ({items, onElementCreated, toggleFunction, isHidden}
                     </fieldset>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary" type="submit" onClick={() => (handleClose)}>
+                <Button variant="primary" type="submit">
                     Insert Data
                 </Button>
                 <Button variant="secondary" onClick={handleClose}>

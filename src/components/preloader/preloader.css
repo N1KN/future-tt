@@ -1,6 +1,48 @@
 .loader-wrapper {
+	width: 100%;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	align-items: center;
+}
+
+.loader-wrapper .text {
+
+}
+
+.timer-loader-custom {
+	-moz-border-radius: 48px !important;
+	-webkit-border-radius: 48px !important;
+	border-radius: 48px !important;
+	width: 96px !important;
+	height: 96px !important;
+}
+
+.timer-loader-custom::before {
+	-moz-transform-origin: 6px 6px !important;
+	-ms-transform-origin: 6px 6px !important;
+	-webkit-transform-origin: 6px 6px !important;
+	transform-origin: 6px 6px !important;
+	-moz-border-radius: 6px !important;
+	-webkit-border-radius: 6px !important;
+	border-radius: 6px !important;
+	width: 12px !important;
+	height: 38.4px !important;
+	left: 36px !important;
+	top: 36px !important;
+}
+
+.timer-loader-custom::after {
+	-moz-transform-origin: 6px 6px !important;
+	-ms-transform-origin: 6px 6px !important;
+	-webkit-transform-origin: 6px 6px !important;
+	transform-origin: 6px 6px !important;
+	-moz-border-radius: 6px !important;
+	-webkit-border-radius: 6px !important;
+	border-radius: 6px !important;
+	width: 12px !important;
+	height: 32px !important;
+	left: 36px !important;
+	top: 36px !important;
 }
 
 /* Source: https://github.com/jlong/css-spinners */
@@ -56,9 +98,9 @@
 	height: 48px;
 }
 .timer-loader:not(:required)::before {
-	-moz-animation: timer-loader 1250ms infinite linear;
-	-webkit-animation: timer-loader 1250ms infinite linear;
-	animation: timer-loader 1250ms infinite linear;
+	-moz-animation: timer-loader 2500ms infinite linear;
+	-webkit-animation: timer-loader 2500ms infinite linear;
+	animation: timer-loader 2500ms infinite linear;
 	-moz-transform-origin: 3px 3px;
 	-ms-transform-origin: 3px 3px;
 	-webkit-transform-origin: 3px 3px;

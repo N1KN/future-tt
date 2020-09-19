@@ -1,10 +1,9 @@
 import React from 'react';
-import {Link, useRouteMatch} from "react-router-dom";
+import {Link} from "react-router-dom";
 // import BookList from '../book-list';
 // import ShoppingCartTable from '../shopping-cart-table/shopping-cart-table';
 
 const HomePage = () => {
-  let { path, url } = useRouteMatch();
 
   return (
     <React.Fragment>
