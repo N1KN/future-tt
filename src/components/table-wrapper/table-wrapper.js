@@ -55,7 +55,7 @@ const TableWrapper = ({
 
     const setPage = (newPageIndex) => {
         if(pageIndex !== newPageIndex && newPageIndex >= 1
-            && newPageIndex <= Math.floor(bodyItems.length / itemsPerPage)) {
+            && newPageIndex <= Math.ceil(bodyItems.length / itemsPerPage)) {
             const newPath = generatePath(path, {
                 dataLength: fillServiceType,
                 pageIndex: newPageIndex
@@ -75,7 +75,7 @@ const TableWrapper = ({
         if(bodyItems.length> 0 && getItemsOnPage(bodyItems, itemsPerPage, pageIndex).length === 0) {
             setPage(1);
         }
-    }, [pageIndex]);
+    }, [pageIndex, bodyItems]);
 
     return (
         <React.Fragment>
