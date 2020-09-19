@@ -1,7 +1,7 @@
 import {createQuery} from "../utils";
 
 export default class LongFillService {
-    _apiBase = 'http://www.filltext.com/';
+    _apiBase = '//www.filltext.com/';
 
     getResource = async (url) => {
         const res = await fetch(`${this._apiBase}${url}`);

@@ -3,7 +3,7 @@ export const SORT_TYPE_BY = 'SORT_TYPE_BY';
 export const SORT_TYPE = 'SORT_TYPE';
 export const SORT_BY = 'SORT_BY';
 export const CHANGE_MAP = 'CHANGE_MAP';
-export const CLEAR = 'CLEAR';
+export const CLEAR_FILTER = 'CLEAR_FILTER';
 
 export const setFilterText = (text = '') => ({
     type: FILTER_TEXT,
@@ -31,7 +31,7 @@ export const changeMap = (mapArr) => ({
 });
 
 export const clearFilter = () => ({
-    type: 'CLEAR',
+    type: CLEAR_FILTER,
     payload: {
         text: '',
         sortBy: '',

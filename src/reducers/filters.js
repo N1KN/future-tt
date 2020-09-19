@@ -1,4 +1,4 @@
-import {CHANGE_MAP, CLEAR, FILTER_TEXT, SORT_BY, SORT_TYPE, SORT_TYPE_BY} from "../actions/filters";
+import {CHANGE_MAP, CLEAR_FILTER, FILTER_TEXT, SORT_BY, SORT_TYPE, SORT_TYPE_BY} from "../actions/filters";
 
 const filtersReducerDefaultState = {
     text: "",
@@ -47,7 +47,7 @@ const changeFilters = (state, action) => {
                 ...state.filters,
                 map: action.payload
             };
-        case CLEAR:
+        case CLEAR_FILTER:
             return {
                 ...state.filters,
                 text: action.payload.text,
