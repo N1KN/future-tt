@@ -58,7 +58,7 @@ const TableWrapper = ({
             && newPageIndex <= Math.floor(bodyItems.length / itemsPerPage)) {
             const newPath = generatePath(path, {
                 dataLength: fillServiceType,
-                newPageIndex
+                pageIndex: newPageIndex
             });
             history.replace(newPath);
         }
