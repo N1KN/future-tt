@@ -4,13 +4,12 @@ import PaginationBar from "../paginator";
 import SearchBar from "../search-bar";
 import ElementCreatorModal from "../modal-element-creator";
 import Table from "../table";
-import './table-wrapper.css';
 import { clearFilter, setFilterText, setSortByAndType} from "../../actions/filters";
 import {addBodyDataItem, setHeaderData} from "../../actions/data-list";
 import {connect} from "react-redux";
 import {generatePath, useHistory} from "react-router";
 import {useRouteMatch} from "react-router-dom";
-
+import './table-wrapper.css';
 
 const TableWrapper = ({
                           headerItems,
@@ -21,6 +20,7 @@ const TableWrapper = ({
                           mapObj,
                           fillServiceType,
                           setSortByAndType,
+                          onBodyItemSelect,
                           addRow,
                           changeHeaderData,
                           changeFilterText,
@@ -36,6 +36,8 @@ const TableWrapper = ({
     // if(bodyItems.every((el) => el.length !== headerItems.length)) {
     //     return (<ErrorIndicator />);
     // }
+
+
 
     const toggleSort = (index, newSortType) => {
         const _tmpHeaderData = [...headerItems];
@@ -96,6 +98,7 @@ const TableWrapper = ({
             <Table
                 onChangeSort={toggleSort}
                 headerItems={headerItems}
+                onBodyItemSelect={onBodyItemSelect}
                 bodyItems={getItemsOnPage(bodyItems, itemsPerPage, pageIndex)} />
             <Navbar expand={false} variant="dark" className="border-0 flex-column">
                 {/*<select className="d-none w-auto mr-auto form-control-sm">*/}
@@ -134,7 +137,6 @@ const mapDispatchToProps = (dispatch, props) => {
             dispatch(addBodyDataItem(id, firstName, lastName, email, phone)),
         changeHeaderData: (headerData) => dispatch(setHeaderData(headerData)),
         changeFilterText: (str) => dispatch(setFilterText(str)),
-        // setSortBy: (key) => dispatch(setSortBy(key)),
         // setSortType: (str) => dispatch(setSortType(str)),
         setSortByAndType: (key, str) => dispatch(setSortByAndType(key, str)),
         clearFilter: () => dispatch(clearFilter()),

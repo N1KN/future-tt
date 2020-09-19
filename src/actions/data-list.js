@@ -36,6 +36,13 @@ const addBodyDataItem = (id, firstName, lastName, email, phone) => {
             lastName: String(lastName),
             email: String(email),
             phone: String(phone),
+            address: {
+                streetAddress: '',
+                city: '',
+                state: '',
+                zip: ''
+            },
+            description: 'Manually added'
         }
     };
 };
@@ -48,7 +55,6 @@ const setHeaderData = (headerData) => {
 }
 
 const fetchData = (fillService, dispatch) => () => {
-    console.log('fetchData', fillService instanceof ShortFillService ? 'short' : 'long');
     dispatch(dataRequested());
     fillService.getTableData()
         .then((response) => {

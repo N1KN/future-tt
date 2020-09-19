@@ -12,9 +12,20 @@ import {compose} from "../../utils";
 import {withFillService} from "../hoc";
 import {convertObjectToArray} from "../../helpers";
 import TableWrapper from "../table-wrapper";
+import {changeItemDetails} from "../../actions/item-details";
 
 
-const TablePage = ({fillServiceType, headerItems, dataList, setMap, changeHeaderData, changeService, fetchData}) => {
+const TablePage = ({
+                       fillServiceType,
+                       headerItems,
+                       dataList,
+                       detailsObj,
+                       setMap,
+                       setDetailedItem,
+                       changeHeaderData,
+                       changeService,
+                       fetchData
+}) => {
     const bodyItemsMap = ["id", "firstName", "lastName", "email", "phone"];
     const bodyItems = dataList.map((dataItem) => convertObjectToArray(dataItem, bodyItemsMap));
 
@@ -23,6 +34,9 @@ const TablePage = ({fillServiceType, headerItems, dataList, setMap, changeHeader
     const changeFillService = useContext(ChangeFillServiceContext);
     let { path } = useRouteMatch();
 
+    const handleBodyItemSelect = (index) => {
+        setDetailedItem(dataList[index]);
+    };
 
     useEffect(() => {
         setMap(bodyItemsMap);
@@ -36,7 +50,6 @@ const TablePage = ({fillServiceType, headerItems, dataList, setMap, changeHeader
     }, []);
 
     useEffect(() => {
-        console.log('TablePage.useEffect', [dataLength, fillServiceType]);
         if(fillServiceType === dataLength) {
             fetchData();
         } else {
@@ -64,20 +77,22 @@ const TablePage = ({fillServiceType, headerItems, dataList, setMap, changeHeader
             {/*<div>TableWrapper Page - {dataLength}({parsedPageIndex})</div>*/}
             <TableWrapper
                 renderId={false}
-                {...{headerItems, bodyItems, setBodyItems: (() => false), pageIndex}}
+                onBodyItemSelect={handleBodyItemSelect}
+                {...{headerItems, bodyItems, pageIndex}}
             />
-            <DetailedItem />
+            <DetailedItem hidden={detailsObj.selected} data={detailsObj.item}/>
         </React.Fragment>
     );
 };
 
 const mapStateToProps = (state) => {
-    const {filters, data: {headerList, bodyList, error, loading}} = state;
+    const {filters, data: {headerList, bodyList, error, loading}, itemDetails} = state;
     // console.log('TablePage', list, filters, state);
     return {
         fillServiceType: state.fillService,
         dataList: getVisibleData(bodyList, filters),
         headerItems: headerList,
+        detailsObj: itemDetails,
         hasLoading: loading,
         hasError: error
     };
@@ -88,6 +103,7 @@ const mapDispatchToProps = (dispatch, props) => {
         setMap: (newMap) => dispatch(changeMap(newMap)),
         changeService: (fillServiceType) => dispatch(changeFillService(fillServiceType)),
         fetchData: fetchData(props.fillService, dispatch),
+        setDetailedItem: (obj) => dispatch(changeItemDetails(obj)),
         changeHeaderData: (headerData) => dispatch(setHeaderData(headerData))
     };
 };

@@ -9,7 +9,7 @@ import {setSortBy, setSortType} from "../../actions/filters";
 
 import './table.css';
 
-const Table = ({headerItems, bodyItems, onChangeSort}) => {
+const Table = ({headerItems, bodyItems, onChangeSort, onBodyItemSelect}) => {
 
 
     return (
@@ -18,7 +18,7 @@ const Table = ({headerItems, bodyItems, onChangeSort}) => {
                 <TableHeader
                     columnNames={headerItems}
                     onClick={onChangeSort} />
-                <TableBody items={bodyItems} />
+                <TableBody items={bodyItems} {...{onBodyItemSelect}}/>
             </BootstrapTable>
         </React.Fragment>
     );
